@@ -4,7 +4,7 @@
   window.Player = (function() {
     function Player($el) {
       this.close = __bind(this.close, this);      this.id = $el.data('youtube');
-      this.player = $($el.data('target')) || false;
+      this.player = $($el.data('target'));
       this.overlay = null;
       this.body = $('body');
       this.prepare();
@@ -14,11 +14,12 @@
     }
 
     Player.prototype.prepare = function() {
-      if (!this.player) {
+      if (this.player.length) {
+        this.player.empty();
+      } else {
         this.player = $('<div id="player">').appendTo(this.body);
         this.overlay = $('<div id="overlay">').appendTo(this.player);
       }
-      this.player.empty();
       return this.iframe = $("<iframe width='560' height='315' src='http://www.youtube.com/embed/" + this.id + "?rel=0&autoplay=1' frameborder='0' allowfullscreen>").appendTo(this.player);
     };
 

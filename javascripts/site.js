@@ -131,7 +131,7 @@
       });
       if (!!(window.history && history.pushState)) {
         window.onpopstate = this.popState;
-        this.body.on("click", "a:not('.download, .link, .video-link')", this.leave);
+        this.body.on('click', "a:not('.download, .link, .video-link')", this.leave);
       }
       this.body.on('mouseover', '[rel="external"]', this.linkTo);
       return this.body.on('click', '.video-link', this.playVideo);
